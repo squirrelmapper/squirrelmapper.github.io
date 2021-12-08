@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>SquirrelMapper</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>SquirrelMapper</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1504">
+  <!-- this script changes the anchor position -->
+  <!-- http://jsfiddle.net/ianclark001/rkocah23/ -->
+<script>
+(function(document, history, location) {
+  var HISTORY_SUPPORT = !!(history && history.pushState);
+
+  var anchorScrolls = {
+    ANCHOR_REGEX: /^#[^ ]+$/,
+    OFFSET_HEIGHT_PX: 65,
+
+    /**
+     * Establish events, and fix initial scroll position if a hash is provided.
+     */
+    init: function() {
+      this.scrollToCurrent();
+      $(window).on('hashchange', $.proxy(this, 'scrollToCurrent'));
+      $('body').on('click', 'a', $.proxy(this, 'delegateAnchors'));
+    },
+
+    /**
+     * Return the offset amount to deduct from the normal scroll position.
+     * Modify as appropriate to allow for dynamic calculations
+     */
+    getFixedOffset: function() {
+      return this.OFFSET_HEIGHT_PX;
+    },
+
+    /**
+     * If the provided href is an anchor which resolves to an element on the
+     * page, scroll to it.
+     * @param  {String} href
+     * @return {Boolean} - Was the href an anchor.
+     */
+    scrollIfAnchor: function(href, pushToHistory) {
+      var match, anchorOffset;
+
+      if(!this.ANCHOR_REGEX.test(href)) {
+        return false;
+      }
+
+      match = document.getElementById(href.slice(1));
+
+      if(match) {
+        anchorOffset = $(match).offset().top - this.getFixedOffset();
+        $('html, body').animate({ scrollTop: anchorOffset});
+
+        // Add the state to history as-per normal anchor links
+        if(HISTORY_SUPPORT && pushToHistory) {
+          history.pushState({}, document.title, location.pathname + href);
+        }
+      }
+
+      return !!match;
+    },
+    
+    /**
+     * Attempt to scroll to the current location's hash.
+     */
+    scrollToCurrent: function(e) { 
+      if(this.scrollIfAnchor(window.location.hash) && e) {
+        e.preventDefault();
+      }
+    },
+
+    /**
+     * If the click event's target was an anchor, fix the scroll position.
+     */
+    delegateAnchors: function(e) {
+      var elem = e.target;
+
+      if(this.scrollIfAnchor(elem.getAttribute('href'), true)) {
+        e.preventDefault();
+      }
+    }
+  };
+
+    $(document).ready($.proxy(anchorScrolls, 'init'));
+})(window.document, window.history, window.location);
+</script>
+
+<!-- this script changes the anchor position -->
+<!-- http://jsfiddle.net/ianclark001/rkocah23/ -->
+<script>
+(function(document, history, location) {
+  var HISTORY_SUPPORT = !!(history && history.pushState);
+
+  var anchorScrolls = {
+    ANCHOR_REGEX: /^#[^ ]+$/,
+    OFFSET_HEIGHT_PX: 50,
+
+    /**
+     * Establish events, and fix initial scroll position if a hash is provided.
+     */
+    init: function() {
+      this.scrollToCurrent();
+      $(window).on('hashchange', $.proxy(this, 'scrollToCurrent'));
+      $('body').on('click', 'a', $.proxy(this, 'delegateAnchors'));
+    },
+
+    /**
+     * Return the offset amount to deduct from the normal scroll position.
+     * Modify as appropriate to allow for dynamic calculations
+     */
+    getFixedOffset: function() {
+      return this.OFFSET_HEIGHT_PX;
+    },
+
+    /**
+     * If the provided href is an anchor which resolves to an element on the
+     * page, scroll to it.
+     * @param  {String} href
+     * @return {Boolean} - Was the href an anchor.
+     */
+    scrollIfAnchor: function(href, pushToHistory) {
+      var match, anchorOffset;
+
+      if(!this.ANCHOR_REGEX.test(href)) {
+        return false;
+      }
+
+      match = document.getElementById(href.slice(1));
+
+      if(match) {
+        anchorOffset = $(match).offset().top - this.getFixedOffset();
+        $('html, body').animate({ scrollTop: anchorOffset});
+
+        // Add the state to history as-per normal anchor links
+        if(HISTORY_SUPPORT && pushToHistory) {
+          history.pushState({}, document.title, location.pathname + href);
+        }
+      }
+
+      return !!match;
+    },
+    
+    /**
+     * Attempt to scroll to the current location's hash.
+     */
+    scrollToCurrent: function(e) { 
+      if(this.scrollIfAnchor(window.location.hash) && e) {
+        e.preventDefault();
+      }
+    },
+
+    /**
+     * If the click event's target was an anchor, fix the scroll position.
+     */
+    delegateAnchors: function(e) {
+      var elem = e.target;
+
+      if(this.scrollIfAnchor(elem.getAttribute('href'), true)) {
+        e.preventDefault();
+      }
+    }
+  };
+
+    $(document).ready($.proxy(anchorScrolls, 'init'));
+})(window.document, window.history, window.location);
+</script>
+
+</head>
+<body>
+</body>
+</html>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="../styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">SquirrelMapper</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="results.html">Results</a>
+</li>
+<li>
+  <a href="map.html">Squirrel Map</a>
+</li>
+<li>
+  <a href="faq.html">FAQ</a>
+</li>
+<li>
+  <a href="contact.html">Contact</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="mailto:cosentino@hws.edu">
+    <span class="fa fa-envelope"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/squirrelsevolve">
+    <span class="fa fa-twitter"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">SquirrelMapper</h1>
+
+</div>
+
+
+<script type="text/javascript">
+$('.title').remove()
+</script>
+<p><br></p>
+<div id="evolution" class="section level2">
+<h2><strong>Evolution</strong></h2>
+<hr>
+<p><strong>What is evolution?</strong></p>
+<p>Evolution is the change in gene frequency within a population. Over a long period of time, evolution can generate new species. Processes like speciation generally take millions of years, but evolution is happening all the time, especially at the level of local populations, such as that changing allele frequencies and coat color in gray squirrels. Natural selection is the key mechanism of evolution.</p>
+<p><strong>What is natural selection?</strong></p>
+<p>Natural selection is a process that involves heritable traits that permit an organism to leave more offspring than those who lack those traits thereby enabling those traits to become more common in a population over successive generations. What is the genetic difference between black and gray squirrels?</p>
+</div>
+<div id="genetics" class="section level2">
+<h2><strong>Genetics</strong></h2>
+<hr>
+<p><strong>What is the genetic difference between black and gray squirrels?</strong></p>
+<p>Black and gray squirrels are only different based on one gene. Alleles are variations on DNA sequences at a specific location on a chromosome (usually different forms of the same gene). The allele for squirrel fur color has two different possible sequences – one that codes for gray fur and one that codes for black fur. Each squirrel has two copies of this allele. If a squirrel has two copies of the gray allele, then it will be gray, but if it has either one copy of the gray and one of the black or if it has two copies of the black allele, then it will be black. The gray type is actually genetically recessive, which is somewhat counterintuitive since it is the more common genotype these days!</p>
+<p><strong>This genetics stuff is really interesting… tell me more!</strong></p>
+<p>Most dark pigmentation in mammals is associated with the MC1R gene. The MC1R gene regulates how much brown/black pigment (eumelanin) versus pale red/yellow pigment (phaeomelanin) is added to hairs as they grow. When the alpha melanocyte-stimulating stimulating hormone (αMSH) binds to the MC1R gene, eumelanin (dark pigment) is produced; otherwise phaeomelanin (light pigment) is produced. In black squirrels, the MC1R gene has undergone a small deletion (24 base pairs of DNA) that corresponds to just 8 amino acids. This deletion hastens binding of the αMSH to the MC1R gene increasing production of eumelanin (the mechanism is not yet known). This is known as the EB allele. In the gray squirrel a complete MC1R gene (lacking the deletion) blocks binding of αMSH increasing production of phaeomelanin. This is known as the E+ allele. The EB allele is incompletely dominant to the E+ allele. So E+/E+ is the genotype of the gray squirrel, EB/EB is the genotype of the black squirrel, and EB/E+ (or E+/EB) is the genotype of the brown-black squirrel. In the field it’s hard to distinguish a black EB/EB from a black EB/E+ squirrel but look carefully: the EB/EB is jet black all over but and EB/E+ squirrel have mostly brown-black backs but a distinctly lighter-colored (often orange-colored) belly. It’s quite likely that there are other genes and alleles at work but at present this is our best understanding of the genetic mechanism at work. (See FAQ; Literature)</p>
+</div>
+<div id="squirrels" class="section level2">
+<h2><strong>Squirrels</strong></h2>
+<hr>
+<p><strong>How long do squirrels live?</strong></p>
+<p>The lifespan of the gray squirrel varies, but they can live up to 10 years in the wild.</p>
+<p><strong>Are the squirrels that I see in my backyard the same from year to year?</strong></p>
+<p>Squirrels’ home ranges are generally only a few acres, so it’s possible that you are seeing the same squirrel families year after year. Try to pick out distinguishing characteristics (ear notches, color variation, etc.) to follow individual squirrels!</p>
+<p><strong>Why do you say that the gray squirrel was originally black?</strong></p>
+<p>The species that we commonly call the eastern gray squirrel was, according to historical documents, originally mostly black. One historical account says: “Grey-squirrels were rarely met with before the commencement of the [20th] century, though they are now quite numerous; while black-squirrels, though now nearly if not quite extinct, were then found in large numbers” (John M. Weeks, History of Salisbury, Vermont. Middleburg, 1860, p. 112). “Squirrels in Early Wisconsin” published by A.W. Schorger in the Wisconsin Academy of Sciences, Arts and Letters is an excellent reference on this topic.</p>
+<p><strong>Are squirrel color morphs adapted to temperature?</strong></p>
+<p>There is some <a href="https://www.jstor.org/stable/30156213?seq=1#metadata_info_tab_contents">evidence</a> that the black morph has greater capacity to thermoregulate in cold conditions, and the black morph does appear to be more common in colder areas. But this probably doesn’t explain why the black morph appears to be more common in urban areas because cities are typically 2-3 C warmer than surrounding rural areas (known as the <a href="https://en.wikipedia.org/wiki/Urban_heat_island">“urban heat island”</a> effect).</p>
+<p><strong>Is it possible that black squirrels are common in cities because they were introduced there?</strong></p>
+<p>Absolutely. Black squirrels were often introduced to cities as novelty. But this might not explain why black squirrels have remained common primarily in cities. Squirrels are very abundant in urban and rural areas and have great capacity to move long distances. Black squirrels were introduced to cities many decades ago, so there’s been plenty of time for them to move into rural areas. In addition to mapping squirrel color morphs, we’re conducting studies to more directly measure natural selection on squirrel color morphs to make sure their geographical distributions are not simply the outcomes of chance introductions.</p>
+<p><strong>Why do squirrels make “those” noises?</strong></p>
+<p>You may have noticed squirrels making many different sounds like squeaks, chatters, and raspy, scolding noises. They are using these sounds to communicate with each other! Squirrels make different sounds to communicate territoriality, alarm and courtship. Squirrels also communicate by flicking their tails in different ways.</p>
+<p><strong>What do squirrels do in the winter?</strong></p>
+<p>Gray squirrels build nests, called dreys, out of sticks and leaves. You can see these in the tops of trees in the fall and winter. Dreys are about the size of basketballs. These are “communal nests” that several squirrels usually occupy at the same time. Only pregnant females like to be alone in their own nest; otherwise it’s warmer in a shared nest. Squirrels will spend the majority of the winter in the drey, coming out occasionally to search for food that they have buried or to bask on a sunny day. In the drey, a squirrel will cover itself with its big, furry tail to stay warm. Squirrels keep their activities to a minimum to conserve energy, which isn’t true hibernation (like a bear).</p>
+<p><strong>Why are squirrels interesting to scientists who study evolution?</strong></p>
+<p>Because squirrels are so visible and recognizable they are a great way to get non-scientists interested in evolution and involved in scientific studies. The simple genetic difference between black and gray squirrels also provides an easy way (relatively speaking!) to watch how our rapidly changing environment is affecting evolutionary processes within our own lifetimes. You don’t need a fancy machine to sequence DNA to watch this bit of evolution in action, just your own two eyes.</p>
+</div>
+
+<div id="footer">
+<center>
+<br>
+<br>
+<br>
+<br>
+<p>Last modified August 28, 2021</p>
+</center>
+</div>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
