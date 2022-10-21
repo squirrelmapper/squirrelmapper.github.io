@@ -13,12 +13,21 @@
 
 <title>SquirrelMapper</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -196,37 +205,21 @@
 </body>
 </html>
 
-
-
-
 <style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
-<link rel="stylesheet" href="../styles.css" type="text/css" />
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
 
 
 
@@ -235,10 +228,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -255,40 +244,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -316,7 +278,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -328,7 +290,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -339,10 +301,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -354,7 +329,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -443,6 +417,9 @@ $(document).ready(function () {
   <a href="map.html">Squirrel Map</a>
 </li>
 <li>
+  <a href="squirrelspotter.html">Squirrel Spotter</a>
+</li>
+<li>
   <a href="faq.html">FAQ</a>
 </li>
 <li>
@@ -467,7 +444,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -479,47 +456,117 @@ $(document).ready(function () {
 <script type="text/javascript">
 $('.title').remove()
 </script>
-<br>
+<p><br></p>
 <center>
 <div id="measure-evolution-in-your-backyard" class="section level1">
 <h1><strong>Measure evolution in your backyard!</strong></h1>
-<div id="the-eastern-gray-squirrel-sciurus-carolinensis-consists-of-two-color-morphs-gray-and-black.-squirrels-of-different-colors-occur-in-very-different-patterns-in-different-neighborhoodswhy" class="section level4">
-<h4><strong>The eastern gray squirrel (<em>Sciurus carolinensis</em>) consists of two color morphs: gray and black. Squirrels of different colors occur in very different patterns in different neighborhoods…why?</strong></h4>
-<p><br></p>
-<div class="container-fluid main-container">
-<div class="row">
-<div class="row">
-<div class="col-lg-3">
-<h3 id="ways-you-can-help"><strong>Ways you can help</strong></h3>
-<h4 id="contribute-squirrel-observations"><strong><a href="https://www.inaturalist.org/projects/squirrelmapper">Contribute squirrel observations</a></strong></h4>
-<h4 id="classify-squirrel-color"><strong><a href="https://www.zooniverse.org/projects/bcosentino/squirrelmapper">Classify squirrel color</a></strong></h4>
-<h4 id="play-find-the-squirrel"><strong><a href="https://bcosentino.shinyapps.io/squirrelfinder/">Play <em>Find the Squirrel</em></a></strong></h4>
-<p><br></p>
-</div>
-<div class="col-lg-6">
-<div class="figure" style="text-align: center">
-<img src="images/splash_attribution.jpg" alt="Image by Eyesplash Photography at Flickr (License: [CC BY-NC-ND](https://creativecommons.org/licenses/by-nc-nd/4.0/))" width="500px" />
-<p class="caption">
-Image by Eyesplash Photography at Flickr (License: <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND</a>)
-</p>
-</div>
-<p><br></p>
-</div>
-<div class="col-lg-3">
-<h3 id="hunters-pest-control"><strong>Hunters &amp; pest control</strong></h3>
-<h4 id="send-us-samples-of-your-squirrels"><strong><a href="hunters.html">Send us samples of your squirrels!</a></strong></h4>
-<p><br></p>
-<h3 id="researchers"><strong>Researchers</strong></h3>
-<h4 id="collaborative-project-on-parallel-clines"><strong><a href="clines.html">Collaborative project on parallel clines</a></strong></h4>
-<p><br></p>
-</div>
-<div style="height:200px;">
-
-</div>
-</div>
-<div id="together-we-can-crack-this-nut" class="section level2">
-<h2><strong>Together we can crack this nut!</strong></h2>
 </center>
+<div id="the-eastern-gray-squirrel-sciurus-carolinensis-consists-of-two-color-morphs-gray-and-black.-squirrels-of-different-colors-occur-in-very-different-patterns-in-different-neighborhoodswhy-help-us-find-out.-together-we-can-crack-this-nut" class="section level4">
+<h4><strong>The eastern gray squirrel (<em>Sciurus carolinensis</em>) consists of two color morphs: gray and black. Squirrels of different colors occur in very different patterns in different neighborhoods…why? Help us find out. Together we can crack this nut!</strong></h4>
+<p><br> <br></p>
+</div>
+<div id="calling-all-citizen-scientists" class="section level2">
+<h2><strong>Calling All Citizen Scientists!</strong></h2>
+<div>
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3" style="margin-left: -1rem; margin-right: -1rem; margin-top: 1rem; margin-bottom: 1rem; ">
+<div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah " style="padding: 1rem ; border-width: 0; border-radius: .6rem .6rem .6rem .6rem ;">
+<a href="https://www.inaturalist.org/projects/squirrelmapper" style="color: inherit;">
+<img src="images/0000_1_ObserveSquirrels.jpg" class="card-img-top" style="border-style:solid; border-color:inherits; border-width:2px 2px 0 2px; border-radius: .6rem .6rem 0 0 ;"/>
+</a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: inherits; border-style:solid; border-color:inherits; border-width:2px; border-radius: 0 0 .6rem .6rem ;">
+<a href="https://www.inaturalist.org/projects/squirrelmapper">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Observe squirrels</h5>
+</a>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah " style="padding: 1rem ; border-width: 0; border-radius: .6rem .6rem .6rem .6rem ;">
+<a href="https://www.zooniverse.org/projects/bcosentino/squirrelmapper" style="color: inherit;">
+<img src="images/0001_2_ClassifySquirrels.jpg" class="card-img-top" style="border-style:solid; border-color:inherits; border-width:2px 2px 0 2px; border-radius: .6rem .6rem 0 0 ;"/>
+</a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: inherits; border-style:solid; border-color:inherits; border-width:2px; border-radius: 0 0 .6rem .6rem ;">
+<a href="https://www.zooniverse.org/projects/bcosentino/squirrelmapper">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Classify squirrels</h5>
+</a>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah " style="padding: 1rem ; border-width: 0; border-radius: .6rem .6rem .6rem .6rem ;">
+<a href="https://squirrelmapper.org/squirrelspotter.html" style="color: inherit;">
+<img src="images/0002_2_Squirrelspotter.png" class="card-img-top" style="border-style:solid; border-color:inherits; border-width:2px 2px 0 2px; border-radius: .6rem .6rem 0 0 ;"/>
+</a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: inherits; border-style:solid; border-color:inherits; border-width:2px; border-radius: 0 0 .6rem .6rem ;">
+<a href="https://squirrelmapper.org/squirrelspotter.html">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Play Squirrel Spotter</h5>
+</a>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+</div>
+<div id="explore-research-on-evolution" class="section level2">
+<h2><strong>Explore Research on Evolution</strong></h2>
+<div>
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3" style="margin-left: -1rem; margin-right: -1rem; margin-top: 1rem; margin-bottom: 1rem; ">
+<div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah " style="padding: 1rem ; border-width: 0; border-radius: .6rem .6rem .6rem .6rem ;">
+<a href="https://squirrelmapper.org/map.html" style="color: inherit;">
+<img src="images/0003_4_InteractiveSquirrelMap.jpg" class="card-img-top" style="border-style:solid; border-color:inherits; border-width:2px 2px 0 2px; border-radius: .6rem .6rem 0 0 ;"/>
+</a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: inherits; border-style:solid; border-color:inherits; border-width:2px; border-radius: 0 0 .6rem .6rem ;">
+<a href="https://squirrelmapper.org/map.html">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Interactive Squirrel Map</h5>
+</a>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah " style="padding: 1rem ; border-width: 0; border-radius: .6rem .6rem .6rem .6rem ;">
+<a href="https://squirrelmapper.org/about.html" style="color: inherit;">
+<img src="images/0004_5_SquirrelEvolution.jpg" class="card-img-top" style="border-style:solid; border-color:inherits; border-width:2px 2px 0 2px; border-radius: .6rem .6rem 0 0 ;"/>
+</a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: inherits; border-style:solid; border-color:inherits; border-width:2px; border-radius: 0 0 .6rem .6rem ;">
+<a href="https://squirrelmapper.org/about.html">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">How Evolution Works</h5>
+</a>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah " style="padding: 1rem ; border-width: 0; border-radius: .6rem .6rem .6rem .6rem ;">
+<a href="https://squirrelmapper.org/results.html" style="color: inherit;">
+<img src="images/0005_6_SquirrelResearch.jpg" class="card-img-top" style="border-style:solid; border-color:inherits; border-width:2px 2px 0 2px; border-radius: .6rem .6rem 0 0 ;"/>
+</a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: inherits; border-style:solid; border-color:inherits; border-width:2px; border-radius: 0 0 .6rem .6rem ;">
+<a href="https://squirrelmapper.org/results.html">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Our research</h5>
+</a>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+</div>
+<div id="collaborate-and-learn" class="section level2">
+<h2><strong>Collaborate and learn</strong></h2>
+<div>
+<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3" style="margin-left: -1rem; margin-right: -1rem; margin-top: 1rem; margin-bottom: 1rem; ">
+<div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah " style="padding: 1rem ; border-width: 0; border-radius: .6rem .6rem .6rem .6rem ;">
+<a href="https://squirrelmapper.org/clines.html" style="color: inherit;">
+<img src="images/0006_7_CallingResearchers.jpg" class="card-img-top" style="border-style:solid; border-color:inherits; border-width:2px 2px 0 2px; border-radius: .6rem .6rem 0 0 ;"/>
+</a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: inherits; border-style:solid; border-color:inherits; border-width:2px; border-radius: 0 0 .6rem .6rem ;">
+<a href="https://squirrelmapper.org/clines.html">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Calling all researchers!</h5>
+</a>
+</div>
+</div>
+<div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah " style="padding: 1rem ; border-width: 0; border-radius: .6rem .6rem .6rem .6rem ;">
+<a href="" style="color: inherit;">
+<img src="images/0007_8_CallingEducators.jpg" class="card-img-top" style="border-style:solid; border-color:inherits; border-width:2px 2px 0 2px; border-radius: .6rem .6rem 0 0 ;"/>
+</a>
+<div class="card-body justify-content-end m-0 p-0" style="visibility: visible; background-color: inherits; border-style:solid; border-color:inherits; border-width:2px; border-radius: 0 0 .6rem .6rem ;">
+<a href="">
+<h5 class="card-title my-auto px-3 pt-3 pb-3">Calling all educators (Coming Soon!)</h5>
+</a>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -529,7 +576,7 @@ Image by Eyesplash Photography at Flickr (License: <a href="https://creativecomm
 <br>
 <br>
 <br>
-<p>Last modified January, 2022</p>
+<p>Last modified October 2022</p>
 </center>
 </div>
 
@@ -541,7 +588,7 @@ Image by Eyesplash Photography at Flickr (License: <a href="https://creativecomm
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -559,7 +606,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

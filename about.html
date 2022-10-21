@@ -13,12 +13,21 @@
 
 <title>SquirrelMapper</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -196,37 +205,21 @@
 </body>
 </html>
 
-
-
-
 <style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
-<link rel="stylesheet" href="../styles.css" type="text/css" />
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
 
 
 
@@ -235,10 +228,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -255,40 +244,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -316,7 +278,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -328,7 +290,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -339,10 +301,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -354,7 +329,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -443,6 +417,9 @@ $(document).ready(function () {
   <a href="map.html">Squirrel Map</a>
 </li>
 <li>
+  <a href="squirrelspotter.html">Squirrel Spotter</a>
+</li>
+<li>
   <a href="faq.html">FAQ</a>
 </li>
 <li>
@@ -467,7 +444,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -520,14 +497,20 @@ Image by ncowey at iNaturalist (License: <a href="https://creativecommons.org/li
 <ol style="list-style-type: decimal">
 <li><p><strong>Contribute observations of squirrels to the <a href="https://www.inaturalist.org/projects/squirrelmapper">SquirrelMapper project on iNaturalist</a>.</strong> Over 100,000 photographs of squirrels have been submitted so far. When you submit an observation, the community of citizen scientists at iNaturalist confirm its identification. Once an observation is confirmed to be an eastern gray squirrel (a <a href="https://www.inaturalist.org/pages/help#quality">research grade</a> observation), we import the photo to our project site at Zooniverse for you to classify by its coat color.</p></li>
 <li><p><strong>Classify the coat color of squirrels as gray or black at the <a href="https://www.zooniverse.org/projects/bcosentino/squirrelmapper">SquirrelMapper project on Zooniverse</a>.</strong> The coat color of each squirrel is confirmed through classifications by at least 10 users at Zooniverse. Once the color of a squirrel is classified, we map it, identify its habitat, and determine which morph occurs more often where. This lets us understand how quickly squirrels, and mammals like them, can adapt to changes in their habitats.</p></li>
-<li><p><strong>Directly measure natural selection on squirrel coloration by playing our <a href="https://bcosentino.shinyapps.io/squirrelfinder/">Find the Squirrel game</a>.</strong> In this game you will search for squirrels in scenes of old growth forests, secondary forests, and roads, and we measure how long it takes you to find gray and black squirrels in each scene. By participating in the game you will directly measure the selection pressures on black and gray squirrels in each environment.</p></li>
+<li><p><strong>Directly measure natural selection on squirrel coloration by playing our <a href="https://bcosentino.shinyapps.io/squirrelspotter/">SquirrelSpotter game</a>.</strong> In this game you will search for squirrels in scenes of old growth forests, secondary forests, and roads, and we measure how long it takes you to find gray and black squirrels in each scene. By participating in the game you will directly measure the selection pressures on black and gray squirrels in each environment.</p></li>
 </ol>
 <p><strong>Squirrel hunters &amp; pest management professionals:</strong> If you’re interested in contributing squirrel tissue from legally harvested squirrels to our studies, <strong><a href="hunters.html">please read more here</a></strong>.</p>
 <p><strong>Researchers:</strong> If you’re interested on participating in a collaborative project to better understand the mechanisms of urban evolution, <strong><a href="clines.html">please read more here</a></strong>.</p>
+<p><strong>Educators:</strong> We are building curriculuar materials for K12 education using squirrel coat color as a case study. We will soon have a dedicated web page with these materials, but in the mean time you can engage studnets in our interactive applications. Use our <a href="https://bcosentino.shinyapps.io/squirrelmapper/">SquirrelMapper map</a> to analyse how color morphs vary in prevalence from place to place. Use our <a href="https://bcosentino.shinyapps.io/squirrelspotter/">SquirrelSpotter game</a> to illustrate how natural selection works, and have student analyze their own data on how fast they can detect squirrels in different environments.</p>
 </div>
 <div id="want-to-learn-more" class="section level2">
 <h2><strong>Want to learn more?</strong></h2>
 <hr>
+<p><strong>Our publications</strong></p>
+<p><a href="https://www.nature.com/articles/s41598-022-05746-2">Cosentino, B.J. and J.P. Gibbs. 2022. Parallel evolution of urban-rural clines in melanism in a widespread mammal. Scientific Reports 12:1752.</a></p>
+<p><a href="https://www.discovermagazine.com/planet-earth/city-squirrels-look-different-is-evolution-driving-a-color-change">Fischman, B.J., B.J. Cosentino, and J.P. Gibbs. 2021. City squirrels look different. Is evolution driving a color Change? Discover Magazine - Citizen Science Salon.</a></p>
+<p>Gibbs, J.P., M.F. Buff., and B.J. Cosentino. 2019. The Biological System - Urban Wildlife, Adaptation, and Evolution: Urbanization as a Driver of Contemporary Evolution in Gray Squirrels (Sciurus carolinensis). In Understanding Urban Ecology. Email Brad Cosentino (<a href="mailto:cosentino@hws.edu" class="email">cosentino@hws.edu</a>) for a copy of this article.</p>
+<p><strong>Other publications of interest</strong></p>
 <p>A fascinating overview of the history of squirrels in urban areas: <em>The Urbanization of the Eastern Gray Squirrel in the United States</em>, Journal of American History 100, no. 3 (2013): 691-710 (.pdf available on author Etienne Benson’s <a href="http://etiennebenson.com/publications/">website</a>)</p>
 <p>This <a href="https://99percentinvisible.org/episode/uptown-squirrel/">podcast</a> integrates much about our relationship with squirrels.</p>
 <p>An <a href="https://academic.oup.com/jhered/article/100/6/709/834239">article</a> by Helen McRobie on gray squirrel morph genetics: The genetic basis of melanism in the gray squirrel (<em>Sciurus carolinensis</em>) Journal of Heredity 100: 709-714.</p>
@@ -539,7 +522,7 @@ Image by ncowey at iNaturalist (License: <a href="https://creativecommons.org/li
 <br>
 <br>
 <br>
-<p>Last modified January, 2022</p>
+<p>Last modified October 2022</p>
 </center>
 </div>
 
@@ -551,7 +534,7 @@ Image by ncowey at iNaturalist (License: <a href="https://creativecommons.org/li
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -569,7 +552,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

@@ -444,7 +444,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div id="header">
+<div id="section-header">
 
 
 
@@ -457,42 +457,97 @@ $(document).ready(function () {
 $('.title').remove()
 </script>
 <p><br></p>
-<div id="evolution" class="section level2">
-<h2><strong>Evolution</strong></h2>
-<hr>
-<p><strong>What is evolution?</strong></p>
-<p>Evolution is the change in gene frequency within a population. Over a long period of time, evolution can generate new species. Processes like speciation generally take millions of years, but evolution is happening all the time, especially at the level of local populations, such as that changing allele frequencies and coat color in gray squirrels. Natural selection is the key mechanism of evolution.</p>
-<p><strong>What is natural selection?</strong></p>
-<p>Natural selection is a process that involves heritable traits that permit an organism to leave more offspring than those who lack those traits thereby enabling those traits to become more common in a population over successive generations. What is the genetic difference between black and gray squirrels?</p>
+<style>
+.media {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+}
+
+.media__image { display: block; }
+
+.media__body {
+  background: rgba(51, 51, 51, 0.9);
+  bottom: 0;
+  color: white;
+  font-size: 3em;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 3.75em 3em;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  right: 0;
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+}
+
+.media__body:hover { opacity: 1; }
+
+.media__body:after,
+.media__body:before {
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  bottom: 1em;
+  content: '';
+  left: 1em;
+  opacity: 0;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  -webkit-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  transform: scale(1.5);
+  -webkit-transition: 0.6s 0.2s;
+  transition: 0.6s 0.2s;
+}
+
+.media__body:before {
+  border-bottom: none;
+  border-top: none;
+  left: 2em;
+  right: 2em;
+}
+
+.media__body:after {
+  border-left: none;
+  border-right: none;
+  bottom: 2em;
+  top: 2em;
+}
+
+.media__body:hover:after,
+.media__body:hover:before {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+}
+
+.media__body h2 { margin-top: 0; }
+
+.media__body h1 { font-size: 1.5em;
+        vertical-align: middle;
+
+}
+
+</style>
+<h1>
+</h1>
+<a href="https://bcosentino.shinyapps.io/squirrelspotter/" 
+target="_blank">
+<div class="media">
+
 </div>
-<div id="genetics" class="section level2">
-<h2><strong>Genetics</strong></h2>
-<hr>
-<p><strong>What is the genetic difference between black and gray squirrels?</strong></p>
-<p>Black and gray squirrels are only different based on one gene. Alleles are variations on DNA sequences at a specific location on a chromosome (usually different forms of the same gene). The allele for squirrel fur color has two different possible sequences – one that codes for gray fur and one that codes for black fur. Each squirrel has two copies of this allele. If a squirrel has two copies of the gray allele, then it will be gray, but if it has either one copy of the gray and one of the black or if it has two copies of the black allele, then it will be black. The gray type is actually genetically recessive, which is somewhat counterintuitive since it is the more common genotype these days!</p>
-<p><strong>This genetics stuff is really interesting… tell me more!</strong></p>
-<p>Most dark pigmentation in mammals is associated with the MC1R gene. The MC1R gene regulates how much brown/black pigment (eumelanin) versus pale red/yellow pigment (phaeomelanin) is added to hairs as they grow. When the alpha melanocyte-stimulating stimulating hormone (αMSH) binds to the MC1R gene, eumelanin (dark pigment) is produced; otherwise phaeomelanin (light pigment) is produced. In black squirrels, the MC1R gene has undergone a small deletion (24 base pairs of DNA) that corresponds to just 8 amino acids. This deletion hastens binding of the αMSH to the MC1R gene increasing production of eumelanin (the mechanism is not yet known). This is known as the EB allele. In the gray squirrel a complete MC1R gene (lacking the deletion) blocks binding of αMSH increasing production of phaeomelanin. This is known as the E+ allele. The EB allele is incompletely dominant to the E+ allele. So E+/E+ is the genotype of the gray squirrel, EB/EB is the genotype of the black squirrel, and EB/E+ (or E+/EB) is the genotype of the brown-black squirrel. In the field it’s hard to distinguish a black EB/EB from a black EB/E+ squirrel but look carefully: the EB/EB is jet black all over but and EB/E+ squirrel have mostly brown-black backs but a distinctly lighter-colored (often orange-colored) belly. It’s quite likely that there are other genes and alleles at work but at present this is our best understanding of the genetic mechanism at work. (See FAQ; Literature)</p>
+<div class="media">
+<img alt="" class="media__image" src="images/SquirrelSpotterStartPage.png" />
+<div class="media__body">
+<h1>
+Play Now
+</h1>
 </div>
-<div id="squirrels" class="section level2">
-<h2><strong>Squirrels</strong></h2>
-<hr>
-<p><strong>How long do squirrels live?</strong></p>
-<p>The lifespan of the gray squirrel varies, but they can live up to 10 years in the wild.</p>
-<p><strong>Are the squirrels that I see in my backyard the same from year to year?</strong></p>
-<p>Squirrels’ home ranges are generally only a few acres, so it’s possible that you are seeing the same squirrel families year after year. Try to pick out distinguishing characteristics (ear notches, color variation, etc.) to follow individual squirrels!</p>
-<p><strong>Why do you say that the gray squirrel was originally black?</strong></p>
-<p>The species that we commonly call the eastern gray squirrel was, according to historical documents, originally mostly black. One historical account says: “Grey-squirrels were rarely met with before the commencement of the [20th] century, though they are now quite numerous; while black-squirrels, though now nearly if not quite extinct, were then found in large numbers” (John M. Weeks, History of Salisbury, Vermont. Middleburg, 1860, p. 112). “Squirrels in Early Wisconsin” published by A.W. Schorger in the Wisconsin Academy of Sciences, Arts and Letters is an excellent reference on this topic.</p>
-<p><strong>Are squirrel color morphs adapted to temperature?</strong></p>
-<p>There is some <a href="https://www.jstor.org/stable/30156213?seq=1#metadata_info_tab_contents">evidence</a> that the black morph has greater capacity to thermoregulate in cold conditions, and the black morph does appear to be more common in colder areas. But this probably doesn’t explain why the black morph appears to be more common in urban areas because cities are typically 2-3 C warmer than surrounding rural areas (known as the <a href="https://en.wikipedia.org/wiki/Urban_heat_island">“urban heat island”</a> effect).</p>
-<p><strong>Is it possible that black squirrels are common in cities because they were introduced there?</strong></p>
-<p>Absolutely. Black squirrels were often introduced to cities as novelty. But this might not explain why black squirrels have remained common primarily in cities. Squirrels are very abundant in urban and rural areas and have great capacity to move long distances. Black squirrels were introduced to cities many decades ago, so there’s been plenty of time for them to move into rural areas. In addition to mapping squirrel color morphs, we’re conducting studies to more directly measure natural selection on squirrel color morphs to make sure their geographical distributions are not simply the outcomes of chance introductions.</p>
-<p><strong>Why do squirrels make “those” noises?</strong></p>
-<p>You may have noticed squirrels making many different sounds like squeaks, chatters, and raspy, scolding noises. They are using these sounds to communicate with each other! Squirrels make different sounds to communicate territoriality, alarm and courtship. Squirrels also communicate by flicking their tails in different ways.</p>
-<p><strong>What do squirrels do in the winter?</strong></p>
-<p>Gray squirrels build nests, called dreys, out of sticks and leaves. You can see these in the tops of trees in the fall and winter. Dreys are about the size of basketballs. These are “communal nests” that several squirrels usually occupy at the same time. Only pregnant females like to be alone in their own nest; otherwise it’s warmer in a shared nest. Squirrels will spend the majority of the winter in the drey, coming out occasionally to search for food that they have buried or to bask on a sunny day. In the drey, a squirrel will cover itself with its big, furry tail to stay warm. Squirrels keep their activities to a minimum to conserve energy, which isn’t true hibernation (like a bear).</p>
-<p><strong>Why are squirrels interesting to scientists who study evolution?</strong></p>
-<p>Because squirrels are so visible and recognizable they are a great way to get non-scientists interested in evolution and involved in scientific studies. The simple genetic difference between black and gray squirrels also provides an easy way (relatively speaking!) to watch how our rapidly changing environment is affecting evolutionary processes within our own lifetimes. You don’t need a fancy machine to sequence DNA to watch this bit of evolution in action, just your own two eyes.</p>
 </div>
+<p></a></p>
 
 <div id="footer">
 <center>
@@ -525,7 +580,7 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function () {
-  window.buildTabsets("TOC");
+  window.buildTabsets("section-TOC");
 });
 
 $(document).ready(function () {
